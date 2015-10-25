@@ -98,12 +98,18 @@ the following R code (output on the next page):</p>
 
 <pre><code class="r">library(datasets)
 library(ggplot2)
-library(dplyr)
 ggplot(mtcars, aes(x = disp, y = mpg)) + 
-                        geom_point(aes(color = factor(cyl))) +
-                        coord_cartesian(ylim=c(0,35), xlim=c(0,500)) +
-                        scale_colour_manual(
-                                values = c(&quot;8&quot; = &quot;red&quot;,&quot;4&quot; = &quot;blue&quot;,&quot;6&quot; = &quot;green&quot;))
+                geom_point(aes(color = factor(cyl))) +
+                coord_cartesian(ylim=c(0,35), xlim=c(0,500)) +
+                scale_colour_manual(
+                        values = c(&quot;8&quot; = &quot;red&quot;, &quot;4&quot; = &quot;blue&quot;,
+                                &quot;6&quot; = &quot;green&quot;)) +
+                xlab(&#39;Engine displacement (cubic inches)&#39;) +
+                ylab(&#39;Miles per gallon&#39;) + 
+                geom_hline(yintercept = mean(mtcars$mpg, 
+                                             na.rm = TRUE)) +
+                geom_vline(xintercept = mean(mtcars$disp, 
+                                             na.rm = TRUE))
 </code></pre>
 
   </article>

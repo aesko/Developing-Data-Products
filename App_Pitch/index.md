@@ -61,12 +61,18 @@ the following R code (output on the next page):
 ```r
 library(datasets)
 library(ggplot2)
-library(dplyr)
 ggplot(mtcars, aes(x = disp, y = mpg)) + 
-                        geom_point(aes(color = factor(cyl))) +
-                        coord_cartesian(ylim=c(0,35), xlim=c(0,500)) +
-                        scale_colour_manual(
-                                values = c("8" = "red","4" = "blue","6" = "green"))
+                geom_point(aes(color = factor(cyl))) +
+                coord_cartesian(ylim=c(0,35), xlim=c(0,500)) +
+                scale_colour_manual(
+                        values = c("8" = "red", "4" = "blue",
+                                "6" = "green")) +
+                xlab('Engine displacement (cubic inches)') +
+                ylab('Miles per gallon') + 
+                geom_hline(yintercept = mean(mtcars$mpg, 
+                                             na.rm = TRUE)) +
+                geom_vline(xintercept = mean(mtcars$disp, 
+                                             na.rm = TRUE))
 ```
 
 --- .class #id
