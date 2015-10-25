@@ -1,5 +1,5 @@
 # server.R
-# 2015-09-27
+# 2015-10-25
 # Miles/gallon vs. displacement
 
 
@@ -25,11 +25,19 @@ shinyServer(function(input, output) {
                 # ggplot required this step, as it can't use direct output from 
                 # the reactive() function
                 carData <- filterCar()
-                p <- ggplot(carData, aes(x = disp, y = mpg)) + 
+                p <- ggplot(carData, aes(x = disp, y = mpg)) +
                         geom_point(aes(color = factor(cyl))) +
                         coord_cartesian(ylim=c(0,35), xlim=c(0,500)) +
                         scale_colour_manual(
-                                values = c("8" = "red","4" = "blue","6" = "green"))
+                                values = c("8" = "red",
+                                           "4" = "blue",
+                                           "6" = "green")) +
+                        xlab('Engine displacement (cubic inches)') +
+                        ylab('Miles per gallon') + 
+                        geom_hline(yintercept = mean(carData$mpg, 
+                                                     na.rm = TRUE)) +
+                        geom_vline(xintercept = mean(carData$disp, 
+                                                     na.rm = TRUE))
                         
                 print(p)
         })

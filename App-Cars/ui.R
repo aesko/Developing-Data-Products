@@ -1,5 +1,5 @@
 # ui.R
-# 2015-09-27
+# 2015-10-25
 # Miles/gallon vs. displacement
 
 # Load necessary libraries
@@ -12,8 +12,9 @@ library(dplyr)
 # Texts for the UI
 mainText <- 'The graph above is a scatter plot depicting the relationship between mileage
         and engine size of vehicles. Datapoints in the graph are colored based on the
-        number of cylinders a vehicle has. The data is from the mtcars data frame in the
-        datasets library which is preinstalled in R.'
+        number of cylinders a vehicle has. Horizontal and vertical ablines are drawn on
+        the arithmetic mean of the displayed datapoints. The source of the data is the mtcars 
+        data frame in the datasets library which is preinstalled in R.'
 sideBarText <- 'Use the checkboxes to choose which vehicles are plotted based on number of 
         cylinders.'
 
